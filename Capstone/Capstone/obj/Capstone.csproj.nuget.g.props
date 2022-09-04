@@ -13,4 +13,7 @@
     <SourceRoot Include="C:\Users\danke\.nuget\packages\" />
     <SourceRoot Include="E:\Telerik\ToolboxNuGetPackages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMaterialDesignThemes Condition=" '$(PkgMaterialDesignThemes)' == '' ">C:\Users\danke\.nuget\packages\materialdesignthemes\4.5.0</PkgMaterialDesignThemes>
+  </PropertyGroup>
 </Project>

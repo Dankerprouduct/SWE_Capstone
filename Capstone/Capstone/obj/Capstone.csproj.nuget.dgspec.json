@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danke\\Documents\\GitHub\\InMotion\\Capstone\\Capstone\\Capstone.csproj": {}
+    "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danke\\Documents\\GitHub\\InMotion\\Capstone\\Capstone\\Capstone.csproj": {
+    "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danke\\Documents\\GitHub\\InMotion\\Capstone\\Capstone\\Capstone.csproj",
+        "projectUniqueName": "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj",
         "projectName": "Capstone",
-        "projectPath": "C:\\Users\\danke\\Documents\\GitHub\\InMotion\\Capstone\\Capstone\\Capstone.csproj",
+        "projectPath": "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj",
         "packagesPath": "C:\\Users\\danke\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danke\\Documents\\GitHub\\InMotion\\Capstone\\Capstone\\obj\\",
+        "outputPath": "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Telerik\\ToolboxNuGetPackages"
@@ -45,6 +45,16 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "MaterialDesignColors": {
+              "target": "Package",
+              "version": "[2.0.6, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

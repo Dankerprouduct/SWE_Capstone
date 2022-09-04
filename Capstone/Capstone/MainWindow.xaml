@@ -5,8 +5,111 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Capstone"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="PriceR" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.RowSpan="2" Background="#202020">
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Maybe logo goes here?"
+                       Foreground="White" 
+                       TextWrapping="Wrap" 
+                       Width="80" Margin="10" 
+                       FontSize="15" FontWeight="Bold"/>
+
+            <StackPanel Orientation="Vertical" Grid.Row="1">
+                <Button materialDesign:ButtonAssist.CornerRadius="0" Foreground="White" BorderThickness="0"
+                    Height="25" HorizontalContentAlignment="Left" Background="#303030">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <materialDesign:PackIcon Kind="Magnify" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="New Item" FontSize="12"/>
+                    </StackPanel>
+                </Button>
+                <Button materialDesign:ButtonAssist.CornerRadius="0" Foreground="White" BorderThickness="0"
+                    Height="25" HorizontalContentAlignment="Left" Background="#303030">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Book" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="Items" FontSize="12"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <Button materialDesign:ButtonAssist.CornerRadius="0"
+                    Foreground="White" BorderThickness="0"
+                    Height="25" HorizontalContentAlignment="Left"
+                    Background="#303030" VerticalAlignment="Bottom"
+                    Grid.Row="2">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Cog" Margin="0, 0, 5, 0"/>
+                    <TextBlock Text="Settings" FontSize="12"/>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+        <Grid Grid.Column="1" VerticalAlignment="Stretch" Grid.RowSpan="2">
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" 
+                        Grid.Row="1"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <materialDesign:PackIcon Kind="Magnify" 
+                                         VerticalAlignment="Center" 
+                                         Foreground="White"/>
+                <TextBox
+                    Height="30"
+                    x:Name="SearchTextBox"
+                    Foreground="White"
+                    VerticalContentAlignment="Bottom"
+                    materialDesign:HintAssist.Hint="Product Name"
+                    materialDesign:HintAssist.HelperText="ex: IPhone 13">
+                </TextBox>
+            </StackPanel>
+
+            <Separator Grid.Row="1" VerticalAlignment="Bottom" 
+                       Opacity=".25"
+                       Margin="0,50,0,0"/>
+
+
+            <ScrollViewer Grid.Row="2">
+                <ListBox>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </Grid>
 
     </Grid>
 </Window>
