@@ -46,6 +46,10 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.45, )"
+            },
             "MaterialDesignColors": {
               "target": "Package",
               "version": "[2.0.6, )"

@@ -86,6 +86,7 @@
                 <TextBox
                     Height="30"
                     x:Name="SearchTextBox"
+                    PreviewKeyDown="SearchTextBox_OnPreviewKeyDown"
                     Foreground="White"
                     VerticalContentAlignment="Bottom"
                     materialDesign:HintAssist.Hint="Product Name"
@@ -99,11 +100,21 @@
 
 
             <ScrollViewer Grid.Row="2">
-                <ListBox>
+                <ListBox ItemsSource="{Binding Products}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Grid.Row="0"
+                                           TextWrapping="Wrap" FontSize="15"/>
+                                <TextBlock Text="{Binding Description}" Grid.Row="1"/>
+                                <TextBlock Text="{Binding Price}" Grid.Row="2" 
+                                           FontStyle="Italic" Foreground="GreenYellow" FontWeight="DemiBold"/>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

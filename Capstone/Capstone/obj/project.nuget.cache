@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "sujMCLQm6gufNmoR4sAIFDRBA00DPWqJrj49yfxOGq7dzHIrf1DZqbuUlYtt6HK3OSiWpS7aGOV2ZMxhLp/TeQ==",
+  "dgSpecHash": "ABKrEDtIkF6NuXaKrxAL3Ic0YIFb7iI7xlFbw+ivHZLsZDvoajvvcoI3E9mJjsOQaHw9dK0GoNvPTPN0fQfz8A==",
   "success": true,
   "projectFilePath": "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\danke\\.nuget\\packages\\htmlagilitypack\\1.11.45\\htmlagilitypack.1.11.45.nupkg.sha512",
     "C:\\Users\\danke\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
     "C:\\Users\\danke\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512"
   ],
