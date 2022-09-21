@@ -46,7 +46,7 @@ namespace Capstone
 
                 this.Dispatcher.Invoke(() =>
                 {
-                    var amazonCrawler = new AmazonCrawler();
+                    var amazonCrawler = new EbayCrawler();
                     var results = Task.Run(() => amazonCrawler.SearchProduct(searchText));
 
                     Products.Clear();
