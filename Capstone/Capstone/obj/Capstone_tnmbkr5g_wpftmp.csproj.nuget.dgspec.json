@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jcb13\\source\\repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj": {}
+    "C:\\Users\\jcb13\\Source\\Repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jcb13\\source\\repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj": {
+    "C:\\Users\\jcb13\\Source\\Repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jcb13\\source\\repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj",
+        "projectUniqueName": "C:\\Users\\jcb13\\Source\\Repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj",
         "projectName": "Capstone",
-        "projectPath": "C:\\Users\\jcb13\\source\\repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj",
+        "projectPath": "C:\\Users\\jcb13\\Source\\Repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj",
         "packagesPath": "C:\\Users\\jcb13\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jcb13\\source\\repos\\SWE_Capstone1\\Capstone\\Capstone\\obj\\",
+        "outputPath": "C:\\Users\\jcb13\\Source\\Repos\\SWE_Capstone1\\Capstone\\Capstone\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jcb13\\AppData\\Roaming\\NuGet\\NuGet.Config",

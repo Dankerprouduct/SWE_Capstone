@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ABKrEDtIkF6NuXaKrxAL3Ic0YIFb7iI7xlFbw+ivHZLsZDvoajvvcoI3E9mJjsOQaHw9dK0GoNvPTPN0fQfz8A==",
+  "dgSpecHash": "uCfX6NMtNOeWYOEunoIcUQK/1hanDCvp/o4zLjALwevKmuJp0SQq73uj42mBmKe6FKfuNXCzN7r32e7D9yRVEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj",
+  "projectFilePath": "C:\\Users\\jcb13\\source\\repos\\SWE_Capstone1\\Capstone\\Capstone\\Capstone.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\danke\\.nuget\\packages\\htmlagilitypack\\1.11.45\\htmlagilitypack.1.11.45.nupkg.sha512",
-    "C:\\Users\\danke\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
-    "C:\\Users\\danke\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512"
+    "C:\\Users\\jcb13\\.nuget\\packages\\htmlagilitypack\\1.11.45\\htmlagilitypack.1.11.45.nupkg.sha512",
+    "C:\\Users\\jcb13\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
+    "C:\\Users\\jcb13\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
