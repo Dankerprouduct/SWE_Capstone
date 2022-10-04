@@ -46,12 +46,18 @@ namespace Capstone.Crawlers
                     try
                     {
                         var price = product.ChildNodes[2].ChildNodes[0].ChildNodes[0].InnerText;
-                        Debug.WriteLine(product.InnerText);
+                        Debug.WriteLine(product.InnerText); //Remove debug later?
                         Debug.WriteLine(price);
                         var prod = new Product();
                         prod.Price = price;
-                        prod.Name = product.InnerText;
-                        result.Add(prod);
+                        prod.Name = product.InnerText.Substring(0,product.InnerText.IndexOf("Opens in a new window"));
+
+                        string currentPrice = prod.Price.Substring(prod.Price.IndexOf('$') + 1);
+                        string currentName = prod.Name;
+                        if (currentName != "Shop on eBay" && Double.TryParse(currentPrice, out _))
+                        {
+                            result.Add(prod);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -59,7 +65,7 @@ namespace Capstone.Crawlers
                     }
                 }
 
-                Debug.WriteLine(document.Text);
+                Debug.WriteLine(document.Text);     //Remove debug later?
             }
 
             return result; 
