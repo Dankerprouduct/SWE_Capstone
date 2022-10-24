@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Capstone"
+        
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -14,6 +15,9 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Buggy" Height="450" Width="800">
+    <Window.DataContext>
+        <Binding RelativeSource="{RelativeSource Self}"/>
+    </Window.DataContext>
 
     <!--Example comment-->
     <Grid>
@@ -93,23 +97,23 @@
                         <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal" Width="80">
                             <Label Content="Amazon" Foreground="White"></Label>
-                            <CheckBox x:Name="SettingsAmazonCheckBox" Foreground="White" HorizontalAlignment="Right"/>
+                                <CheckBox x:Name="SettingsAmazonCheckBox" Foreground="White" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsAmazonChecked}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Width="80">
                             <Label Content="eBay" Foreground="White"></Label>
-                            <CheckBox x:Name="SettingsEBayCheckBox" Foreground="White" HorizontalAlignment="Right"/>
+                            <CheckBox x:Name="SettingsEBayCheckBox" Foreground="White" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsEBayChecked}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Width="80">
                             <Label Content="Walmart" Foreground="White"></Label>
-                            <CheckBox Foreground="White" HorizontalAlignment="Right"/>
+                                <CheckBox x:Name="SettingsWalmartCheckBox" Foreground="White" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsWalmartChecked}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Width="80">
                             <Label Content="Target" Foreground="White"></Label>
-                            <CheckBox Foreground="White" HorizontalAlignment="Right" Checked="SettingsEBayCheckBox_Checked"/>
+                                <CheckBox x:Name="SettingsTargetCheckBox" Foreground="White" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsTargetChecked}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Width="80">
                             <Label Content="Costco" Foreground="White"></Label>
-                            <CheckBox Foreground="White" HorizontalAlignment="Right" Checked="SettingsEBayCheckBox_Checked"/>
+                                <CheckBox x:Name="SettingsCostcoCheckBox" Foreground="White" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsCostcoChecked}"/>
                         </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -119,7 +123,7 @@
                         <Button Content="Manage..." Height="25" Width="100" HorizontalAlignment="Left"/>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Save search data?" FontSize="13"/>
-                            <CheckBox/>
+                            <CheckBox IsChecked="{Binding SettingsData.IsSaveDataChecked}"/>
                         </StackPanel>
                     </StackPanel>
                     <!--Saved items section-->

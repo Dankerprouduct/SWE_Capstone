@@ -16,29 +16,49 @@ using System.Windows.Shapes;
 using Capstone.Crawlers;
 using Capstone.Models;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace Capstone
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// 
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public bool isAmazonChecked { get; set; }
-        public bool isEBayChecked { get; set; }
-        public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>(); 
+        private SettingsData _settingsData = new SettingsData();
+        public SettingsData SettingsData
+        {
+            get {
+                return _settingsData;
+            }
+            set {
+                _settingsData = value;
+                OnPropertyChanged("SettingsData");
+            }
+        }
+
+        private ObservableCollection<Product> _products = new ObservableCollection<Product>();
+        public ObservableCollection<Product> Products
+        {
+            get { return _products; }
+            set
+            {
+                _products = value;
+                OnPropertyChanged("Products");
+            }
+        }
+            
         public MainWindow()
         {
             InitializeComponent();
             RunAmazonCrawler();
             RunEBayCrawler();
-            //Remove later-----
-            isAmazonChecked = true;
-            isEBayChecked = true;
-            //-----------------
-            DataContext = this;
         }
-        
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
         // I guess the runners are empty for now?
         public void RunAmazonCrawler()
         {
@@ -47,18 +67,6 @@ namespace Capstone
         public void RunEBayCrawler()
         {
 
-        }
-        private void SettingsButton_Click(object sender, KeyEventArgs e)
-        {
-            SettingsWindow w1 = new SettingsWindow();
-            w1.RenderSize = new Size(this.ActualWidth, this.ActualHeight);
-            w1.Height = w1.RenderSize.Height;
-            w1.Width = w1.RenderSize.Width;
-            w1.isAmazonChecked = this.isAmazonChecked;
-            w1.isEBayChecked = this.isEBayChecked;
-            
-            w1.Show();
-            this.Hide();
         }
 
         private void SearchTextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
@@ -72,7 +80,8 @@ namespace Capstone
                 this.Dispatcher.Invoke(() =>
                 {
                     List<Product> resultItems = new List<Product>(); // This stores results from each crawler.
-                    if (isEBayChecked)
+                    //If eBay is included in the search...
+                    if (SettingsData.IsEBayChecked)
                     {
                         var eBayCrawler = new EbayCrawler();
                         var results = Task.Run(() => eBayCrawler.SearchProduct(searchText));
@@ -81,7 +90,8 @@ namespace Capstone
                             resultItems.Add(product);
                         }
                     }
-                    if (isAmazonChecked)
+                    //If Amazon is included in the search...
+                    if (SettingsData.IsAmazonChecked)
                     {
                         var amazonCrawler = new AmazonCrawler();
                         var results = Task.Run(() => amazonCrawler.SearchProduct(searchText));
@@ -109,7 +119,7 @@ namespace Capstone
         {
             if (products == null || products.Count == 0)
             {
-                return null;
+                return new List<Product>();
             }
             List<Product> sortedProducts = new List<Product>();
             Product temp = new Product();
@@ -158,13 +168,16 @@ namespace Capstone
             return sortedProducts;
         }
 
-        private void SettingsButton_Click_1(object sender, RoutedEventArgs e)
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow w1 = new SettingsWindow();
-            //w1.NavPanel = this.NavPanel;
+            SettingsWindow w1 = new SettingsWindow()
+            {
+                SettingsData = this.SettingsData
+            };
+
+            //Dimensions
             w1.Height = this.ActualHeight;
             w1.Width = this.ActualWidth;
-
             w1.Top = this.Top;
             w1.Left = this.Left;
 

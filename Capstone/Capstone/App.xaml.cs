@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+using System.Diagnostics;
+
 namespace Capstone
 {
     /// <summary>
@@ -13,5 +15,26 @@ namespace Capstone
     /// </summary>
     public partial class App : Application
     {
+        void Buggy_Startup(object sender, StartupEventArgs e)
+        {
+            //base.OnStartup(e);
+            //These are the initial settings when the app first starts
+            SettingsData initialSettings = new SettingsData()
+            {
+                IsAmazonChecked     = true,         //As we implement more crawlers, we can change the default settings here
+                IsEBayChecked       = true,
+                IsCostcoChecked     = false,
+                IsTargetChecked     = false,
+                IsWalmartChecked    = false,
+                IsSaveDataChecked   = true
+            };
+
+            MainWindow mw = new MainWindow();
+            mw.SettingsData = initialSettings;
+            this.MainWindow = mw;
+            mw.DataContext = initialSettings;
+
+            mw.Show();
+        }
     }
 }

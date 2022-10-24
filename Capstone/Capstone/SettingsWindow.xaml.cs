@@ -11,41 +11,50 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace Capstone
 {
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class SettingsWindow : Window, INotifyPropertyChanged
     {
-        public bool isAmazonChecked { get; set; }
-        public bool isEBayChecked { get; set; }
+        private SettingsData _settingsData = new SettingsData();
+        public SettingsData SettingsData { 
+            get
+            {
+                return _settingsData;
+            }
+            set
+            {
+                if (_settingsData != value)
+                {
+                    _settingsData = value;
+                    OnPropertyChanged("SettingsData");
+                }
+            } 
+        }
         public SettingsWindow()
         {
             InitializeComponent();
-            if (this.isEBayChecked==true)
-            {
-                SettingsEBayCheckBox.IsChecked = true;
-            }
-            if (this.isAmazonChecked==true)
-            {
-                SettingsAmazonCheckBox.IsChecked = true;
-            }
         }
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+        void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow w1 = new MainWindow();
-
+            MainWindow w1 = new MainWindow()
+            {
+                SettingsData = this.SettingsData
+            };
+            
+            //Dimensions
             w1.Height = this.ActualHeight;
             w1.Width = this.ActualWidth;
-
             w1.Top = this.Top;
             w1.Left = this.Left;
-
-            w1.isAmazonChecked = this.isAmazonChecked;
-            w1.isEBayChecked = this.isEBayChecked;
 
             w1.Show();
             this.Hide();
@@ -64,21 +73,26 @@ namespace Capstone
         //Amazon checkbox events
         private void SettingsAmazonCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            isAmazonChecked = true;
+            //isAmazonChecked = true;
         }
         private void SettingsAmazonCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            isAmazonChecked = false;
+            //isAmazonChecked = false;
         }
 
         //Ebay checkbox events
         private void SettingsEBayCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            isEBayChecked = true;
+            //isEBayChecked = true;
         }
         private void SettingsEBayCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            isEBayChecked = false;
+            //isEBayChecked = false;
+        }
+        private void SettingsWindowSetup()
+        {
+            //This is left blank for now
+
         }
     }
 }
