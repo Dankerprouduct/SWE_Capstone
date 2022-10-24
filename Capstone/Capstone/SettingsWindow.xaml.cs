@@ -69,30 +69,13 @@ namespace Capstone
         {
             SearchButton_Click(sender, e);
         }
-
-        //Amazon checkbox events
-        private void SettingsAmazonCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            //isAmazonChecked = true;
-        }
-        private void SettingsAmazonCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            //isAmazonChecked = false;
-        }
-
-        //Ebay checkbox events
-        private void SettingsEBayCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            //isEBayChecked = true;
-        }
-        private void SettingsEBayCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            //isEBayChecked = false;
-        }
         private void SettingsWindowSetup()
         {
             //This is left blank for now
 
         }
+        /*SolidColorBrush MyBrush = Brushes.AliceBlue;
+         // Set the value
+        Application.Current.Resources["DynamicBG"] = MyBrush;*/
     }
 }

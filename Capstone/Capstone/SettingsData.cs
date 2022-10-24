@@ -51,6 +51,8 @@ namespace Capstone
             set { isSaveDataChecked = value; OnPropertyChanged(nameof(IsSaveDataChecked)); }
         }
 
+        
+
         public event PropertyChangedEventHandler? PropertyChanged;
         void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }

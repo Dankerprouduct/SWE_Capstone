@@ -6,16 +6,28 @@
         xmlns:local="clr-namespace:Capstone"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.Foreground="white"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{DynamicResource BackgroundColor}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Buggy" Height="450" Width="800">
     <Window.Resources>
-        
+        <!-- You can change the word/hex values in Color="VALUE" below to see what it looks like... -->
+        <SolidColorBrush x:Name="LabelTextColor" x:Key="LabelTextColor" Color="White"/>         <!--The color of the text used for headings and labels, different than settings buttons-->
+        <SolidColorBrush x:Name="BackgroundColor" x:Key="BackgroundColor" Color="#FF303030"/>   <!--Color of the background of the content side of the window. Sidebar buttons match this color.-->
+        <SolidColorBrush x:Name="SidebarColor" x:Key="SidebarColor" Color="#ff202020"/>         <!--Color of the background for the sidebar on the left-->
+        <SolidColorBrush x:Name="ControlColor" x:Key="ControlColor" Color="#FF1C3E6B"/>         <!--Color of the buttons/boxes found in the settings (including scroll bar)-->
+        <SolidColorBrush x:Name="ButtonTextColor" x:Key="ButtonTextColor" Color="White"/>       <!--Color of the text in the settings buttons-->
+        <SolidColorBrush x:Name="IconColor" x:Key="IconColor" Color="White"/>                   <!--Color of the icons, such as search wand and settings gear-->
+        <SolidColorBrush x:Name="PriceColor" x:Key="PriceColor" Color="GreenYellow"/>           <!--Color of the price amounts for the items in the results of a search-->
+
+        <!--Extra colors for light mode-->
+        <SolidColorBrush x:Name="ExtraColor1" x:Key="ExtraColor1" Color="SpringGreen"/>
+        <SolidColorBrush x:Name="ExtraColor2" x:Key="ExtraColor2" Color="LawnGreen"/>
+        <SolidColorBrush x:Name="ExtraColor3" x:Key="ExtraColor3" Color="ForestGreen"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,7 +42,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.RowSpan="2" Background="#202020" Grid.ColumnSpan="3">
+        <Grid Grid.Column="0" Grid.RowSpan="2" Background="{DynamicResource SidebarColor}" Grid.ColumnSpan="3">
 
 
             <Grid.RowDefinitions>
@@ -39,49 +51,47 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel x:Name="NavPanel" Orientation="Vertical" Grid.Row="2">
+            <StackPanel x:Name="NavPanel" Orientation="Vertical" Grid.Row="2" Background="{DynamicResource SidebarColor}">
                 <Button x:Name="NewItemButton" materialDesign:ButtonAssist.CornerRadius="0" Foreground="White" BorderThickness="0"
-                    Height="25" HorizontalContentAlignment="Left" Background="#303030">
+                    Height="25" HorizontalContentAlignment="Left" Background="{DynamicResource BackgroundColor}">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <materialDesign:PackIcon Kind="Magnify" Margin="0, 0, 5, 0"/>
-                        <TextBlock Text="New Item" FontSize="12"/>
+                        <materialDesign:PackIcon Kind="Magnify" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
+                        <TextBlock Text="New Item" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
                     </StackPanel>
                 </Button>
                 <Button materialDesign:ButtonAssist.CornerRadius="0" Foreground="White" BorderThickness="0"
-                    Height="25" HorizontalContentAlignment="Left" Background="#303030">
+                    Height="25" HorizontalContentAlignment="Left" Background="{DynamicResource BackgroundColor}">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Book" Margin="0, 0, 5, 0"/>
-                        <TextBlock Text="Items" FontSize="12"/>
+                        <materialDesign:PackIcon Kind="Book" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
+                        <TextBlock Text="Items" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
 
             <Button x:Name="SettingsButton" materialDesign:ButtonAssist.CornerRadius="0"
-                    Foreground="White" BorderThickness="0"
+                    Background="{DynamicResource BackgroundColor}" BorderThickness="0"
                     Height="25" HorizontalContentAlignment="Center"
-                    Background="#303030" VerticalAlignment="Bottom"
+                    VerticalAlignment="Bottom"
                     Grid.Row="2" Margin="0,0,0,30" Click="SettingsButton_Click">
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Cog" Margin="0, 0, 5, 0"/>
-                    <TextBlock Text="Settings" FontSize="12"/>
+                    <materialDesign:PackIcon Kind="Cog" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
+                    <TextBlock Text="Settings" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
                 </StackPanel>
             </Button>
             <Button x:Name="AboutButton" materialDesign:ButtonAssist.CornerRadius="0"
-                    Foreground="White" BorderThickness="0"
+                    Foreground="{DynamicResource LabelTextColor}" BorderThickness="0"
                     Height="25" HorizontalContentAlignment="Center"
-                    Background="#303030" VerticalAlignment="Bottom"
+                    Background="{DynamicResource BackgroundColor}" VerticalAlignment="Bottom"
                     Grid.Row="2">
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="About" Margin="0, 0, 5, 0"/>
-                    <TextBlock Text="About" FontSize="12"/>
+                    <materialDesign:PackIcon Kind="About" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
+                    <TextBlock Text="About" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
                 </StackPanel>
             </Button>
             <Image HorizontalAlignment="Center" Height="59" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="/Resources/BuggyLogo.png"/>
 
         </Grid>
-        <Grid Grid.Column="3" Grid.RowSpan="2" Margin="18,0,0,0">
-
-
+        <Grid Grid.Column="3" Grid.RowSpan="2" Margin="18,0,0,0" Background="{DynamicResource BackgroundColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5"/>
                 <RowDefinition Height="Auto"/>
@@ -89,15 +99,15 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" 
                         Grid.Row="1"
-                        HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                        HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{DynamicResource BackgroundColor}">
                 <materialDesign:PackIcon Kind="Magnify" 
                                          VerticalAlignment="Center" 
-                                         Foreground="White"/>
+                                         Foreground="{DynamicResource IconColor}"/>
                 <TextBox
                     Height="30"
                     x:Name="SearchTextBox"
                     PreviewKeyDown="SearchTextBox_OnPreviewKeyDown"
-                    Foreground="White"
+                    Foreground="{DynamicResource LabelTextColor}"
                     VerticalContentAlignment="Bottom"
                     materialDesign:HintAssist.Hint="Search by keyword..."
                     materialDesign:HintAssist.HelperText="ex: IPhone 13">
@@ -110,7 +120,7 @@
                        Margin="0,50,0,0"/>
 
 
-            <ScrollViewer Grid.Row="2">
+            <ScrollViewer Grid.Row="2" Background="{DynamicResource BackgroundColor}">
                 <ListBox x:Name="ProductsList" ItemsSource="{Binding Products}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -125,13 +135,13 @@
                                            TextWrapping="Wrap" FontSize="15"/>
                                 <TextBlock Text="{Binding Description}" Grid.Row="1"/>
                                 <TextBlock Text="{Binding Price}" Grid.Row="2" 
-                                           FontStyle="Italic" Foreground="GreenYellow" FontWeight="DemiBold"/>
+                                           FontStyle="Italic" Foreground="{DynamicResource PriceColor}" FontWeight="DemiBold"/>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </ScrollViewer>
-            <!--
+            <!-- This is the xaml for the settings Button. I tried using a Menu instead (below the commented lines)
             <Button x:Name="SearchOptionsButton" HorizontalAlignment="Left" Margin="189,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" BorderBrush="#FFEAEAEA" Background="#FF3E3E3E" Foreground="#DDFFFFFF" Width="145">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ClipboardFlow" Foreground="White"/>
@@ -143,7 +153,7 @@
                 <MenuItem Header="Search Options" Width="250">
                     <MenuItem Header="Show search options here" >
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Enable component?"/>
+                            <Label Content="Setting 1"/>
                             <CheckBox/>
                         </StackPanel>
                     </MenuItem>
