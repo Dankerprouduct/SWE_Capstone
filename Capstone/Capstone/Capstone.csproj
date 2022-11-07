@@ -10,6 +10,8 @@
   <ItemGroup>
     <None Remove="Resources\add.png" />
     <None Remove="Resources\BuggyLogo.png" />
+    <None Remove="Resources\BuggyLogoD.png" />
+    <None Remove="Resources\BuggyLogoL.png" />
     <None Remove="Resources\clipboard.png" />
     <None Remove="Resources\dollar.png" />
     <None Remove="Resources\logo.png" />
@@ -24,7 +26,8 @@
 
   <ItemGroup>
     <Resource Include="Resources\add.png" />
-    <Resource Include="Resources\BuggyLogo.png" />
+    <Resource Include="Resources\BuggyLogoD.png" />
+    <Resource Include="Resources\BuggyLogoL.png" />
     <Resource Include="Resources\clipboard.png" />
     <Resource Include="Resources\dollar.png" />
     <Resource Include="Resources\logo.png" />
