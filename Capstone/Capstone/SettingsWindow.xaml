@@ -12,7 +12,7 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{DynamicResource BackgroundColor}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Buggy" Height="450" Width="800">
     <Window.DataContext>
@@ -20,16 +20,28 @@
     </Window.DataContext>
     <Window.Resources>
         <!-- You can change the word/hex values in Color="VALUE" below to see what it looks like... -->
-        <SolidColorBrush x:Name="LabelTextColor" x:Key="LabelTextColor" Color="White"/>         <!--The color of the text used for headings and labels, different than settings buttons-->
-        <SolidColorBrush x:Name="BackgroundColor" x:Key="BackgroundColor" Color="#FF303030"/>   <!--Color of the background of the content side of the window. Sidebar buttons match this color.-->
-        <SolidColorBrush x:Name="SidebarColor" x:Key="SidebarColor" Color="#ff202020"/>         <!--Color of the background for the sidebar on the left-->
-        <SolidColorBrush x:Name="ControlColor" x:Key="ControlColor" Color="#FF1C3E6B"/>         <!--Color of the buttons/boxes found in the settings (including scroll bar)-->
-        <SolidColorBrush x:Name="ButtonTextColor" x:Key="ButtonTextColor" Color="White"/>       <!--Color of the text in the settings buttons-->
-        <SolidColorBrush x:Name="IconColor" x:Key="IconColor" Color="White"/>                   <!--Color of the icons, such as search wand and settings gear-->
+        <SolidColorBrush x:Name="LabelTextColor" x:Key="LabelTextColor" Color="Black"/>          <!--The color of the text used for headings and labels, different than settings buttons-->
+        <SolidColorBrush x:Name="BackgroundColor" x:Key="BackgroundColor" Color="White"/>        <!--Color of the background of the content side of the window. Sidebar buttons match this color.-->
+        <SolidColorBrush x:Name="SidebarColor" x:Key="SidebarColor" Color="#097626"/>             <!--Color of the background for the sidebar on the left-->
+        <SolidColorBrush x:Name="ControlColor" x:Key="ControlColor" Color="#13ce66"/>              <!--Color of the buttons/boxes found in the settings (including scroll bar)-->
+        <SolidColorBrush x:Name="ButtonTextColor" x:Key="ButtonTextColor" Color="Black"/>        <!--Color of the text in the settings buttons-->
+        <SolidColorBrush x:Name="SidebarButtonColor" x:Key="SidebarButtonColor" Color="#77d353"/>   <!--Color of the buttons on the sidebar-->
+        <SolidColorBrush x:Name="IconColor" x:Key="IconColor" Color="Black"/>                   <!--Color of the icons, such as search wand and settings gear-->
         <!--Extra colors for light mode-->
         <SolidColorBrush x:Name="ExtraColor1" x:Key="ExtraColor1" Color="SpringGreen"/>         
         <SolidColorBrush x:Name="ExtraColor2" x:Key="ExtraColor2" Color="LawnGreen"/>
         <SolidColorBrush x:Name="ExtraColor3" x:Key="ExtraColor3" Color="ForestGreen"/>
+        
+        <!--Fonts choices below... you can change the name in Value to another font name-->
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Yu Gothic UI"/>
+        </Style>
+        <Style TargetType="Menu">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
         
     </Window.Resources>
 
@@ -46,7 +58,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Column="0" Grid.RowSpan="2" Background="#202020" Grid.ColumnSpan="3">
+        <Grid Grid.Column="0" Grid.RowSpan="2" Background="{DynamicResource SidebarColor}" Grid.ColumnSpan="3">
 
 
             <Grid.RowDefinitions>
@@ -57,7 +69,7 @@
 
             <StackPanel x:Name="NavPanel" Orientation="Vertical" Grid.Row="2">
                 <Button x:Name="SearchButton" materialDesign:ButtonAssist.CornerRadius="0" Foreground="{DynamicResource LabelTextColor}" BorderThickness="0"
-                    Height="25" HorizontalContentAlignment="Left" Background="{DynamicResource BackgroundColor}" Click="Button_Click">
+                    Height="25" HorizontalContentAlignment="Left" Background="{DynamicResource SidebarButtonColor}" Click="SearchButton_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <materialDesign:PackIcon Kind="Magnify" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
                         <TextBlock Text="Search" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
@@ -65,7 +77,7 @@
                 </Button>
             </StackPanel>
             <Button x:Name="SettingsButton" materialDesign:ButtonAssist.CornerRadius="0"
-                    Foreground="{DynamicResource LabelTextColor}" Background="{DynamicResource BackgroundColor}"
+                    Foreground="{DynamicResource LabelTextColor}" Background="{DynamicResource SidebarButtonColor}"
                     BorderThickness="0"
                     Height="25" HorizontalContentAlignment="Center"
                     VerticalAlignment="Bottom"
@@ -78,17 +90,17 @@
             <Button x:Name="AboutButton" materialDesign:ButtonAssist.CornerRadius="0"
                     Foreground="{DynamicResource LabelTextColor}" BorderThickness="0"
                     Height="25" HorizontalContentAlignment="Center"
-                    Background="{DynamicResource BackgroundColor}" VerticalAlignment="Bottom"
+                    Background="{DynamicResource SidebarButtonColor}" VerticalAlignment="Bottom"
                     Grid.Row="2">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="About" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
                     <TextBlock Text="About" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
                 </StackPanel>
             </Button>
-            <Image HorizontalAlignment="Center" Height="59" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="/Resources/BuggyLogo.png"/>
+            <Image HorizontalAlignment="Center" Height="59" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="/Resources/BuggyLogoL.png"/>
 
         </Grid>
-        <Grid Grid.Column="3" Grid.RowSpan="2" Margin="18,0,0,0">
+        <Grid Grid.Column="3" Grid.RowSpan="2" Margin="18,0,0,0" Background="{DynamicResource BackgroundColor}">
 
 
             <Grid.RowDefinitions>
@@ -103,30 +115,31 @@
                        Margin="0,50,0,0" Background="{DynamicResource ControlColor}"/>
 
             <ScrollViewer Grid.Row="2" Background="{DynamicResource BackgroundColor}">
-                <ListBox>
+                <ListBox >
                     <!--"Find deals on" section-->
                     <StackPanel Orientation="Vertical">
                         <Label Content="Find deals on:" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
                         <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal" Width="80">
                                 <Label Content="Amazon" Foreground="{DynamicResource LabelTextColor}"/>
-                                <CheckBox x:Name="SettingsAmazonCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsAmazonChecked}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Width="80">
-                                <Label Content="eBay" Foreground="{DynamicResource LabelTextColor}"/>
-                                <CheckBox x:Name="SettingsEBayCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsEBayChecked}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Width="80">
-                                <Label Content="Walmart" Foreground="{DynamicResource LabelTextColor}"/>
-                                <CheckBox x:Name="SettingsWalmartCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsWalmartChecked}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Width="80">
-                                <Label Content="Target" Foreground="{DynamicResource LabelTextColor}"/>
-                                <CheckBox x:Name="SettingsTargetCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsTargetChecked}"/>
+                                <CheckBox x:Name="SettingsAmazonCheckBox" Background="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsAmazonChecked}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Width="80">
                                 <Label Content="Costco" Foreground="{DynamicResource LabelTextColor}"/>
-                                <CheckBox x:Name="SettingsCostcoCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsCostcoChecked}"/>
+                                <CheckBox x:Name="SettingsCostcoCheckBox" Background="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsCostcoChecked}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="80">
+                                <Label Content="eBay" Foreground="{DynamicResource LabelTextColor}"/>
+                                <CheckBox x:Name="SettingsEBayCheckBox" Background="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsEBayChecked}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Width="80">
+                                <Label Content="Target" Foreground="{DynamicResource LabelTextColor}"/>
+                                <CheckBox x:Name="SettingsTargetCheckBox" Background="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsTargetChecked}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="80">
+                                <Label Content="Walmart" Foreground="{DynamicResource LabelTextColor}"/>
+                                <CheckBox x:Name="SettingsWalmartCheckBox" Background="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsWalmartChecked}"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -136,29 +149,7 @@
                         <Button Content="Manage..." Height="25" Width="100" HorizontalAlignment="Left" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}"/>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Save search data?" FontSize="13" Foreground="{DynamicResource LabelTextColor}"/>
-                            <CheckBox Foreground="{DynamicResource ControlColor}" IsChecked="{Binding SettingsData.IsSaveDataChecked}"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <!--Saved items section-->
-                    <StackPanel Orientation="Vertical">
-                        <Label Content="Saved items" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
-                        <Button Content="Manage..." Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" Height="25" Width="100" HorizontalAlignment="Left"/>
-                    </StackPanel>
-                    <!--Alerts/Notifications section-->
-                    <StackPanel Orientation="Vertical">
-                        <Label Content="Alerts and notifications" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Enable price drop alerts? " Foreground="{DynamicResource LabelTextColor}"/>
-                            <CheckBox Foreground="{DynamicResource ControlColor}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Alert method:" Foreground="{DynamicResource LabelTextColor}"/>
-                            <Label Content="Text?" Foreground="{DynamicResource LabelTextColor}"/>
-                            <CheckBox Foreground="{DynamicResource ControlColor}"/>
-                            <TextBox materialDesign:HintAssist.Hint=" XXX-XXX-XXXX" Width="90" Foreground="{DynamicResource LabelTextColor}"/>
-                            <Label Content="    Email?" Foreground="{DynamicResource LabelTextColor}"/>
-                            <CheckBox Foreground="{DynamicResource ControlColor}"/>
-                            <TextBox materialDesign:HintAssist.Hint=" example@gmail.com" Width="120" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox Background="{DynamicResource ControlColor}" IsChecked="{Binding SettingsData.IsSaveDataChecked}"/>
                         </StackPanel>
                     </StackPanel>
                     <!--Display section-->
@@ -166,12 +157,45 @@
                         <Label Content="Display" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Dark theme?" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="DarkThemeCheckBox" IsChecked="{Binding SettingsData.IsDarkModeChecked}" Background="{DynamicResource ControlColor}"/>
+                        </StackPanel>
+                        <!--Screen Resolution Menu-->
+                        <StackPanel Orientation="Horizontal">
+                            <Menu>
+                                <MenuItem x:Name="ScreenResoultionMenu" Header="Screen Resolution" Height="25" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" BorderBrush="Gray" BorderThickness="1">
+                                    <Button x:Name="Res640_480" Click="Res640_480_Click" Content="640 x 480" BorderThickness="0" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" HorizontalAlignment="Stretch"/>
+                                    <Button x:Name="Res800_480" Click="Res800_480_Click" Content="800 x 480 (default)" BorderThickness="0" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" HorizontalAlignment="Stretch"/>
+                                    <Button x:Name="Res800_600" Click="Res800_600_Click" Content="800 x 600" BorderThickness="0" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" HorizontalAlignment="Stretch"/>
+                                    <Button x:Name="Res1024_768" Click="Res1024_768_Click" Content="1024 x 768" BorderThickness="0" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" HorizontalAlignment="Stretch"/>
+                                    <Button x:Name="Res1280_720" Click="Res1280_720_Click" Content="1280 x 720" BorderThickness="0" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" HorizontalAlignment="Stretch"/>
+                                    <Button x:Name="Res1366_768" Click="Res1366_768_Click" Content="1366 x 768" BorderThickness="0" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" HorizontalAlignment="Stretch"/>
+                                    <Button x:Name="Res1920_1080" Click="Res1920_1080_Click" Content="1920 x 1080" BorderThickness="0" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" HorizontalAlignment="Stretch"/>
+                                    <Button x:Name="Res1920_1200" Click="Res1920_1200_Click" Content="1920 x 1200" BorderThickness="0" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" HorizontalAlignment="Stretch"/>
+                                </MenuItem>
+                            </Menu>
+                        </StackPanel>
+                    </StackPanel>
+                    <!--Alerts/Notifications section-->
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Alerts and notifications" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Enable price drop alerts? " Foreground="{DynamicResource LabelTextColor}"/>
                             <CheckBox Background="{DynamicResource ControlColor}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Set resolution:" Foreground="{DynamicResource LabelTextColor}"/>
-                            <Button Content="450 x 800 (default)  v" Height="25" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource LabelTextColor}"/>
+                            <Label Content="Alert method:" Foreground="{DynamicResource LabelTextColor}"/>
+                            <Label Content="Text?" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox Background="{DynamicResource ControlColor}"/>
+                            <TextBox materialDesign:HintAssist.Hint=" XXX-XXX-XXXX" Width="90" Text="{Binding SettingsData.Phone}"  Foreground="{DynamicResource LabelTextColor}"/>
+                            <Label Content="    Email?" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox Background="{DynamicResource ControlColor}"/>
+                            <TextBox materialDesign:HintAssist.Hint=" example@gmail.com" Width="120" Text="{Binding SettingsData.Email}" Foreground="{DynamicResource LabelTextColor}"/>
                         </StackPanel>
+                    </StackPanel>
+                    <!--Saved items section-->
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Saved items" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
+                        <Button Content="Manage..." Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" Height="25" Width="100" HorizontalAlignment="Left"/>
                     </StackPanel>
                 </ListBox>
             </ScrollViewer>

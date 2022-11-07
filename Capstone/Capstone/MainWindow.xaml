@@ -16,12 +16,13 @@
         Title="Buggy" Height="450" Width="800">
     <Window.Resources>
         <!-- You can change the word/hex values in Color="VALUE" below to see what it looks like... -->
-        <SolidColorBrush x:Name="LabelTextColor" x:Key="LabelTextColor" Color="White"/>         <!--The color of the text used for headings and labels, different than settings buttons-->
+        <SolidColorBrush x:Name="LabelTextColor" x:Key="LabelTextColor" Color="white"/>         <!--The color of the text used for headings and labels, different than settings buttons-->
         <SolidColorBrush x:Name="BackgroundColor" x:Key="BackgroundColor" Color="#FF303030"/>   <!--Color of the background of the content side of the window. Sidebar buttons match this color.-->
         <SolidColorBrush x:Name="SidebarColor" x:Key="SidebarColor" Color="#ff202020"/>         <!--Color of the background for the sidebar on the left-->
-        <SolidColorBrush x:Name="ControlColor" x:Key="ControlColor" Color="#FF1C3E6B"/>         <!--Color of the buttons/boxes found in the settings (including scroll bar)-->
-        <SolidColorBrush x:Name="ButtonTextColor" x:Key="ButtonTextColor" Color="White"/>       <!--Color of the text in the settings buttons-->
-        <SolidColorBrush x:Name="IconColor" x:Key="IconColor" Color="White"/>                   <!--Color of the icons, such as search wand and settings gear-->
+        <SolidColorBrush x:Name="ControlColor" x:Key="ControlColor" Color="#ff74B25D"/>         <!--Color of the buttons/boxes found in the settings (including scroll bar)-->
+        <SolidColorBrush x:Name="ButtonTextColor" x:Key="ButtonTextColor" Color="Black"/>       <!--Color of the text in the settings buttons-->
+        <SolidColorBrush x:Name="IconColor" x:Key="IconColor" Color="white"/>                   <!--Color of the icons, such as search wand and settings gear-->
+        <SolidColorBrush x:Name="SidebarButtonColor" x:Key="SidebarButtonColor" Color="#77d353"/> <!--Color of the buttons on the sidebar. For dark mode, this matches the background color.-->
         <SolidColorBrush x:Name="PriceColor" x:Key="PriceColor" Color="GreenYellow"/>           <!--Color of the price amounts for the items in the results of a search-->
 
         <!--Extra colors for light mode-->
@@ -29,6 +30,9 @@
         <SolidColorBrush x:Name="ExtraColor2" x:Key="ExtraColor2" Color="LawnGreen"/>
         <SolidColorBrush x:Name="ExtraColor3" x:Key="ExtraColor3" Color="ForestGreen"/>
     </Window.Resources>
+    <Window.DataContext>
+        <Binding RelativeSource="{RelativeSource Self}"/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0"/>
@@ -88,7 +92,7 @@
                     <TextBlock Text="About" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
                 </StackPanel>
             </Button>
-            <Image HorizontalAlignment="Center" Height="59" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="/Resources/BuggyLogo.png"/>
+            <Image HorizontalAlignment="Center" Height="59" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="/Resources/BuggyLogoD.png"/>
 
         </Grid>
         <Grid Grid.Column="3" Grid.RowSpan="2" Margin="18,0,0,0" Background="{DynamicResource BackgroundColor}">
@@ -121,7 +125,7 @@
 
 
             <ScrollViewer Grid.Row="2" Background="{DynamicResource BackgroundColor}">
-                <ListBox x:Name="ProductsList" ItemsSource="{Binding Products}">
+                <ListBox x:Name="ProductsList" ItemsSource="{Binding Products, Mode=OneWayToSource}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -141,32 +145,47 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </ScrollViewer>
-            <!-- This is the xaml for the settings Button. I tried using a Menu instead (below the commented lines)
-            <Button x:Name="SearchOptionsButton" HorizontalAlignment="Left" Margin="189,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" BorderBrush="#FFEAEAEA" Background="#FF3E3E3E" Foreground="#DDFFFFFF" Width="145">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ClipboardFlow" Foreground="White"/>
-                    <Label Content="Search Options" Height="19" FontSize="12" VerticalAlignment="Bottom"/>
-                </StackPanel>
-            </Button> 
-            -->
-            <Menu Grid.Row="1" VerticalAlignment="Top" Width="250" HorizontalAlignment="Left" Margin="180,0,0,0">
-                <MenuItem Header="Search Options" Width="250">
-                    <MenuItem Header="Show search options here" >
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Setting 1"/>
-                            <CheckBox/>
-                        </StackPanel>
+            
+            <!-- Menu Button XAML-->
+            <Menu Grid.Row="1" VerticalAlignment="Top" Width="250" HorizontalAlignment="Left" Margin="180,0,0,0" Background="{DynamicResource BackgroundColor}">
+                <MenuItem Header="Search Options" Width="250" Foreground="{DynamicResource LabelTextColor}">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Lowest price first?" Foreground="{DynamicResource LabelTextColor}"/>
+                        <CheckBox x:Name="SortLowestCheckBox" Background="{DynamicResource ControlColor}"/>
+                    </StackPanel>
+                    <MenuItem Header="Sort by retailer" HorizontalAlignment="Left">
+                        <DockPanel>
+                            <Label Content="Amazon" HorizontalAlignment="Left" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="AmazonCheckBox" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsAmazonChecked}"  Background="{DynamicResource ControlColor}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Costco" HorizontalAlignment="Left" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="CostcoCheckBox" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsCostcoChecked}" Background="{DynamicResource ControlColor}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="EBay" HorizontalAlignment="Left" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="EBayCheckBox" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsEBayChecked}" Background="{DynamicResource ControlColor}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Target" HorizontalAlignment="Left" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="TargetCheckBox" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsTargetChecked}" Background="{DynamicResource ControlColor}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Walmart" HorizontalAlignment="Left" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="WalmartCheckBox" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsWalmartChecked}" Background="{DynamicResource ControlColor}"/>
+                        </DockPanel>
                     </MenuItem>
-                    <MenuItem Header="Range">
-                        <WrapPanel Orientation="Vertical">
-                            <Label Content="Enter a range:"/>
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBox Width="40"/>
-                                <Label Content=" - "/>
-                                <TextBox Width="40"/>
-                            </WrapPanel>
+                    <DockPanel>
+                        <DockPanel>
+                            <Label Content="Budget range?" HorizontalAlignment="Left" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="BudgetRangeChecked" HorizontalAlignment="Right"  Background="{DynamicResource ControlColor}"/>
+                        </DockPanel>
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBox Width="40" materialDesign:HintAssist.HelperText="Minimum" Foreground="{DynamicResource LabelTextColor}"/>
+                            <Label Content=" to " Foreground="{DynamicResource LabelTextColor}"/>
+                            <TextBox Width="40" materialDesign:HintAssist.HelperText="Maximum" Foreground="{DynamicResource LabelTextColor}"/>
                         </WrapPanel>
-                    </MenuItem>
+                    </DockPanel>
                 </MenuItem>
             </Menu>
         </Grid>

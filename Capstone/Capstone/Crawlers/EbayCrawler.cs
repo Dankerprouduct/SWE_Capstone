@@ -59,9 +59,9 @@ namespace Capstone.Crawlers
                             result.Add(prod);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception e)
                     {
-
+                        
                     }
                 }
 

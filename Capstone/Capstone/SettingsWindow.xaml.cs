@@ -69,10 +69,58 @@ namespace Capstone
         {
             SearchButton_Click(sender, e);
         }
-        private void SettingsWindowSetup()
+        private void SettingsWindowSetup(bool IsDarkModeEnabled)
         {
-            //This is left blank for now
+            if (IsDarkModeEnabled)
+            {
+                ///SolidColorBrush s = (SolidColorBrush)this.FindResource("BackgroundColor");
+                /// s = new SolidColorBrush(Color "Orange"); //  i dont get it how to fix /?????
+                /*Border b = (Border)this.Template.FindName("BORDERCONTROL", this);
+        b.Background = new SolidColorBrush(Colors.Yellow);*/
+            }
 
+        }
+
+        //Button click events for adjusting screen resolution
+        private void Res640_480_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 480;
+            this.Width = 640;
+        }
+        private void Res800_480_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 480;
+            this.Width = 800;
+        }
+        private void Res800_600_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 600;
+            this.Width = 800;
+        }
+        private void Res1024_768_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 768;
+            this.Width = 1024;
+        }
+        private void Res1280_720_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 720;
+            this.Width = 1280;
+        }
+        private void Res1366_768_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 768;
+            this.Width = 1366;
+        }
+        private void Res1920_1080_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 1080;
+            this.Width = 1920;
+        }
+        private void Res1920_1200_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 1200;
+            this.Width = 1920;
         }
         /*SolidColorBrush MyBrush = Brushes.AliceBlue;
          // Set the value
