@@ -19,7 +19,9 @@ namespace Capstone.Crawlers
     public class AmazonCrawler : IWebCrawler
     {
 
-        public string BaseUrl { get; set; }
+	    public bool Enabled { get; set; } = true; 
+
+		public string BaseUrl { get; set; }
         public AmazonCrawler()
         {
             BaseUrl = @"https://www.amazon.com/"; 
@@ -76,10 +78,15 @@ namespace Capstone.Crawlers
 
 
             }
+            else
+            {
+                Debug.WriteLine($"search for {productName} failed!");
+            }
             
             return result;
 
         }
+
 
         static byte[] Decompress(byte[] data)
         {

@@ -15,7 +15,9 @@ namespace Capstone.Crawlers
     {
         public string BaseUrl { get; set; }
 
-        public EbayCrawler()
+        public bool Enabled { get; set; }
+
+		public EbayCrawler()
         {
             BaseUrl = @"https://www.ebay.com/";
         }
@@ -70,5 +72,6 @@ namespace Capstone.Crawlers
 
             return result; 
         }
+
     }
 }

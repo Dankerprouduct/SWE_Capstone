@@ -76,10 +76,23 @@ namespace Capstone
 
                 
                 var searchText = ((TextBox) sender).Text;
-                
-                this.Dispatcher.Invoke(() =>
+				var products = GetProducts(searchText).Result;
+				products = SortPriceDesc(products);
+				
+				this.Dispatcher.Invoke(() =>
                 {
-                    List<Product> resultItems = new List<Product>(); // This stores results from each crawler.
+
+					Products.Clear();
+					foreach (Product product in products)
+					{
+						Products.Add(product);
+					}
+					return;
+                    
+	                
+	                // old way
+
+	                List<Product> resultItems = new List<Product>(); // This stores results from each crawler.
                     //If eBay is included in the search...
                     if (SettingsData.IsEBayChecked)
                     {
@@ -112,6 +125,29 @@ namespace Capstone
                 });
 
             }
+        }
+
+        private async Task<List<Product>> GetProducts(string searchString)
+        {
+            var products = new List<Product>();
+	        foreach (Type type in GetType().Assembly.GetTypes())
+	        {
+
+		        if (typeof(IWebCrawler).IsAssignableFrom(type))
+		        {
+			        var webCrawler = Activator.CreateInstance(type) as IWebCrawler;
+                    if(!webCrawler.Enabled)
+                        continue;
+			        var values = await webCrawler.SearchProduct(searchString);
+
+                    foreach (var p in values)
+                    {
+                        products.Add(p);
+                    }
+		        }
+	        }
+
+	        return products;
         }
 
         //Takes a list of products and sorts it by price in descending order. This can be used to sort results from any (?) crawler.
