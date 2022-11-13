@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="Capstone.SettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Capstone"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <Binding RelativeSource="{RelativeSource Self}"/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <!-- You can change the word/hex values in Color="VALUE" below to see what it looks like... -->
+        <SolidColorBrush x:Name="LabelTextColor" x:Key="LabelTextColor" Color="White"/>
+        <!--The color of the text used for headings and labels, different than settings buttons-->
+        <SolidColorBrush x:Name="BackgroundColor" x:Key="BackgroundColor" Color="#FF303030"/>
+        <!--Color of the background of the content side of the window. Sidebar buttons match this color.-->
+        <SolidColorBrush x:Name="SidebarColor" x:Key="SidebarColor" Color="#ff202020"/>
+        <!--Color of the background for the sidebar on the left-->
+        <SolidColorBrush x:Name="ControlColor" x:Key="ControlColor" Color="#FF1C3E6B"/>
+        <!--Color of the buttons/boxes found in the settings (including scroll bar)-->
+        <SolidColorBrush x:Name="ButtonTextColor" x:Key="ButtonTextColor" Color="White"/>
+        <!--Color of the text in the settings buttons-->
+        <SolidColorBrush x:Name="IconColor" x:Key="IconColor" Color="White"/>
+        <!--Color of the icons, such as search wand and settings gear-->
+        <!--Extra colors for light mode-->
+        <SolidColorBrush x:Name="ExtraColor1" x:Key="ExtraColor1" Color="SpringGreen"/>
+        <SolidColorBrush x:Name="ExtraColor2" x:Key="ExtraColor2" Color="LawnGreen"/>
+        <SolidColorBrush x:Name="ExtraColor3" x:Key="ExtraColor3" Color="ForestGreen"/>
+
+    </UserControl.Resources>
+    <Grid Grid.Column="3" Grid.RowSpan="2">
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="SettingsHeaderLabel" Grid.Row="1" Content="Settings" FontSize="22" Foreground="{DynamicResource LabelTextColor}" Background="{DynamicResource BackgroundColor}"/>
+
+        <Separator Grid.Row="1" VerticalAlignment="Bottom" 
+                       Opacity=".25"
+                       Margin="0,50,0,0" Background="{DynamicResource ControlColor}"/>
+
+        <ScrollViewer Grid.Row="2" Background="{DynamicResource BackgroundColor}">
+            <ListBox>
+                <!--"Find deals on" section-->
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Find deals on:" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Width="80">
+                            <Label Content="Amazon" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="SettingsAmazonCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsAmazonChecked}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Width="80">
+                            <Label Content="eBay" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="SettingsEBayCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsEBayChecked}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Width="80">
+                            <Label Content="Walmart" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="SettingsWalmartCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsWalmartChecked}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Width="80">
+                            <Label Content="Target" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="SettingsTargetCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsTargetChecked}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Width="80">
+                            <Label Content="Costco" Foreground="{DynamicResource LabelTextColor}"/>
+                            <CheckBox x:Name="SettingsCostcoCheckBox" Foreground="{DynamicResource ControlColor}" HorizontalAlignment="Right" IsChecked="{Binding SettingsData.IsCostcoChecked}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <!--Search data section-->
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Search data" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
+                    <Button Content="Manage..." Height="25" Width="100" HorizontalAlignment="Left" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Save search data?" FontSize="13" Foreground="{DynamicResource LabelTextColor}"/>
+                        <CheckBox Foreground="{DynamicResource ControlColor}" IsChecked="{Binding SettingsData.IsSaveDataChecked}"/>
+                    </StackPanel>
+                </StackPanel>
+                <!--Saved items section-->
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Saved items" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
+                    <Button Content="Manage..." Background="{DynamicResource ControlColor}" Foreground="{DynamicResource ButtonTextColor}" Height="25" Width="100" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <!--Alerts/Notifications section-->
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Alerts and notifications" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Enable price drop alerts? " Foreground="{DynamicResource LabelTextColor}"/>
+                        <CheckBox Foreground="{DynamicResource ControlColor}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Alert method:" Foreground="{DynamicResource LabelTextColor}"/>
+                        <Label Content="Text?" Foreground="{DynamicResource LabelTextColor}"/>
+                        <CheckBox Foreground="{DynamicResource ControlColor}"/>
+                        <TextBox materialDesign:HintAssist.Hint=" XXX-XXX-XXXX" Width="90" Foreground="{DynamicResource LabelTextColor}"/>
+                        <Label Content="    Email?" Foreground="{DynamicResource LabelTextColor}"/>
+                        <CheckBox Foreground="{DynamicResource ControlColor}"/>
+                        <TextBox materialDesign:HintAssist.Hint=" example@gmail.com" Width="120" Foreground="{DynamicResource LabelTextColor}"/>
+                    </StackPanel>
+                </StackPanel>
+                <!--Display section-->
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Display" FontSize="20" Foreground="{DynamicResource LabelTextColor}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Dark theme?" Foreground="{DynamicResource LabelTextColor}"/>
+                        <CheckBox Background="{DynamicResource ControlColor}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Set resolution:" Foreground="{DynamicResource LabelTextColor}"/>
+                        <Button Content="450 x 800 (default)  v" Height="25" Background="{DynamicResource ControlColor}" Foreground="{DynamicResource LabelTextColor}"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListBox>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
