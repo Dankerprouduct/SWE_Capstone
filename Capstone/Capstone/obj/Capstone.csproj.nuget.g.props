@@ -13,6 +13,9 @@
     <SourceRoot Include="C:\Users\danke\.nuget\packages\" />
     <SourceRoot Include="E:\Telerik\ToolboxNuGetPackages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\7.0.0\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\7.0.0\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props')" />
+  </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMaterialDesignThemes Condition=" '$(PkgMaterialDesignThemes)' == '' ">C:\Users\danke\.nuget\packages\materialdesignthemes\4.5.0</PkgMaterialDesignThemes>
   </PropertyGroup>
