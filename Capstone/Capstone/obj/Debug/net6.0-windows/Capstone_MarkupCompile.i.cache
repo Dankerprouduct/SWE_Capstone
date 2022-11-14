@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\danke\Documents\GitHub\SWE_Capstone\Capstone\Capstone\App.xaml
-11407045341
+31488122235
 
-9-1783631064
-197-2004946495
-MainWindow.xaml;
+14-103790024
+217-1365112498
+MainWindow.xaml;SettingsControl.xaml;SettingsWindow.xaml;
 
 False
 

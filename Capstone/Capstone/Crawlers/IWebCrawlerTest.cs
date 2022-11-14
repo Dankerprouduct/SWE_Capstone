@@ -13,5 +13,7 @@ namespace Capstone.Crawlers
         public string BaseUrl { get; set; }
 
         public  Task<List<Product>> SearchProduct(string productName);
+
+        public bool Enabled { get; set; }
     }
 }

@@ -17,6 +17,8 @@ using Capstone.Crawlers;
 using Capstone.Models;
 using System.Diagnostics;
 using System.ComponentModel;
+using Capstone.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Capstone
 {
@@ -26,6 +28,9 @@ namespace Capstone
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+
+	    protected readonly BuggyDbContext _context = new BuggyDbContext();
+
         private SettingsData _settingsData = new SettingsData();
         public SettingsData SettingsData
         {
@@ -45,41 +50,59 @@ namespace Capstone
             set
             {
                 _products = value;
-                OnPropertyChanged("Products");
+                OnPropertyChanged(nameof(Products));
             }
         }
             
         public MainWindow()
         {
             InitializeComponent();
-            RunAmazonCrawler();
-            RunEBayCrawler();
+            DataContext = this;
+
+            this.Loaded += (sender, args) =>
+            {
+	            _context.Database.EnsureCreated(); 
+                _context.Products.Load();
+            };
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-        // I guess the runners are empty for now?
-        public void RunAmazonCrawler()
-        {
-            
-        }
-        public void RunEBayCrawler()
-        {
 
-        }
-
-        private void SearchTextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        private async void SearchTextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
 
                 
                 var searchText = ((TextBox) sender).Text;
-                
-                this.Dispatcher.Invoke(() =>
+				var products = await GetProducts(searchText);
+				products = SortPriceDesc(products);
+				this.Dispatcher.Invoke(() =>
+				{
+					Products.Clear();
+					foreach (Product product in products)
+					{
+						Products.Add(product);
+					}
+				});
+
+				return;
+				this.Dispatcher.Invoke(() =>
                 {
-                    List<Product> resultItems = new List<Product>(); // This stores results from each crawler.
+
+					Products.Clear();
+					foreach (Product product in products)
+					{
+						Products.Add(product);
+					}
+					return;
+                    
+	                
+	                // old way
+
+	                List<Product> resultItems = new List<Product>(); // This stores results from each crawler.
                     //If eBay is included in the search...
                     if (SettingsData.IsEBayChecked)
                     {
@@ -114,9 +137,34 @@ namespace Capstone
             }
         }
 
+        private async Task<List<Product>> GetProducts(string searchString)
+        {
+            var products = new List<Product>();
+	        foreach (Type type in GetType().Assembly.GetTypes())
+	        {
+
+		        if (typeof(IWebCrawler).IsAssignableFrom(type) && type.IsInterface == false)
+		        {
+			        var instance = Activator.CreateInstance(type);
+			        IWebCrawler webCrawler = (IWebCrawler)instance;
+			        if(!webCrawler.Enabled)
+                        continue;
+			        var values = await webCrawler.SearchProduct(searchString);
+
+                    foreach (var p in values)
+                    {
+                        products.Add(p);
+                    }
+		        }
+	        }
+
+	        return products;
+        }
+
         //Takes a list of products and sorts it by price in descending order. This can be used to sort results from any (?) crawler.
         private List<Product> SortPriceDesc(List<Product> products)
         {
+
             if (products == null || products.Count == 0)
             {
                 return new List<Product>();

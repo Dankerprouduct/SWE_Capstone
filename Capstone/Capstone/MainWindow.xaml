@@ -16,13 +16,20 @@
         Title="Buggy" Height="450" Width="800">
     <Window.Resources>
         <!-- You can change the word/hex values in Color="VALUE" below to see what it looks like... -->
-        <SolidColorBrush x:Name="LabelTextColor" x:Key="LabelTextColor" Color="White"/>         <!--The color of the text used for headings and labels, different than settings buttons-->
-        <SolidColorBrush x:Name="BackgroundColor" x:Key="BackgroundColor" Color="#FF303030"/>   <!--Color of the background of the content side of the window. Sidebar buttons match this color.-->
-        <SolidColorBrush x:Name="SidebarColor" x:Key="SidebarColor" Color="#ff202020"/>         <!--Color of the background for the sidebar on the left-->
-        <SolidColorBrush x:Name="ControlColor" x:Key="ControlColor" Color="#FF1C3E6B"/>         <!--Color of the buttons/boxes found in the settings (including scroll bar)-->
-        <SolidColorBrush x:Name="ButtonTextColor" x:Key="ButtonTextColor" Color="White"/>       <!--Color of the text in the settings buttons-->
-        <SolidColorBrush x:Name="IconColor" x:Key="IconColor" Color="White"/>                   <!--Color of the icons, such as search wand and settings gear-->
-        <SolidColorBrush x:Name="PriceColor" x:Key="PriceColor" Color="GreenYellow"/>           <!--Color of the price amounts for the items in the results of a search-->
+        <SolidColorBrush x:Name="LabelTextColor" x:Key="LabelTextColor" Color="White"/>
+        <!--The color of the text used for headings and labels, different than settings buttons-->
+        <SolidColorBrush x:Name="BackgroundColor" x:Key="BackgroundColor" Color="#FF303030"/>
+        <!--Color of the background of the content side of the window. Sidebar buttons match this color.-->
+        <SolidColorBrush x:Name="SidebarColor" x:Key="SidebarColor" Color="#ff202020"/>
+        <!--Color of the background for the sidebar on the left-->
+        <SolidColorBrush x:Name="ControlColor" x:Key="ControlColor" Color="#FF1C3E6B"/>
+        <!--Color of the buttons/boxes found in the settings (including scroll bar)-->
+        <SolidColorBrush x:Name="ButtonTextColor" x:Key="ButtonTextColor" Color="White"/>
+        <!--Color of the text in the settings buttons-->
+        <SolidColorBrush x:Name="IconColor" x:Key="IconColor" Color="White"/>
+        <!--Color of the icons, such as search wand and settings gear-->
+        <SolidColorBrush x:Name="PriceColor" x:Key="PriceColor" Color="GreenYellow"/>
+        <!--Color of the price amounts for the items in the results of a search-->
 
         <!--Extra colors for light mode-->
         <SolidColorBrush x:Name="ExtraColor1" x:Key="ExtraColor1" Color="SpringGreen"/>
@@ -31,79 +38,51 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0"/>
-            <ColumnDefinition Width="0"/>
-            <ColumnDefinition Width="104.12"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.RowSpan="2" Background="{DynamicResource SidebarColor}" Grid.ColumnSpan="3">
+        
 
+        
+        
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <StackPanel x:Name="NavPanel" Orientation="Vertical" Grid.Row="2" Background="{DynamicResource SidebarColor}">
-                <Button x:Name="NewItemButton" materialDesign:ButtonAssist.CornerRadius="0" Foreground="White" BorderThickness="0"
-                    Height="25" HorizontalContentAlignment="Left" Background="{DynamicResource BackgroundColor}">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <materialDesign:PackIcon Kind="Magnify" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
-                        <TextBlock Text="New Item" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
+        <TabControl Grid.Column="0" Grid.RowSpan="2"
+                    materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+                    SnapsToDevicePixels="True"
+                    Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                    TabStripPlacement="Left">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel
+                        Width="auto"
+                        Height="auto">
+                        <materialDesign:PackIcon
+                            Width="24"
+                            Height="24"
+                            HorizontalAlignment="Center"
+                            Kind="Search" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="New Item" />
                     </StackPanel>
-                </Button>
-                <Button materialDesign:ButtonAssist.CornerRadius="0" Foreground="White" BorderThickness="0"
-                    Height="25" HorizontalContentAlignment="Left" Background="{DynamicResource BackgroundColor}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Book" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
-                        <TextBlock Text="Items" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-
-            <Button x:Name="SettingsButton" materialDesign:ButtonAssist.CornerRadius="0"
-                    Background="{DynamicResource BackgroundColor}" BorderThickness="0"
-                    Height="25" HorizontalContentAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Grid.Row="2" Margin="0,0,0,30" Click="SettingsButton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Cog" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
-                    <TextBlock Text="Settings" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="AboutButton" materialDesign:ButtonAssist.CornerRadius="0"
-                    Foreground="{DynamicResource LabelTextColor}" BorderThickness="0"
-                    Height="25" HorizontalContentAlignment="Center"
-                    Background="{DynamicResource BackgroundColor}" VerticalAlignment="Bottom"
-                    Grid.Row="2">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="About" Margin="0, 0, 5, 0" Foreground="{DynamicResource IconColor}"/>
-                    <TextBlock Text="About" FontSize="12" Foreground="{DynamicResource LabelTextColor}"/>
-                </StackPanel>
-            </Button>
-            <Image HorizontalAlignment="Center" Height="59" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="/Resources/BuggyLogo.png"/>
-
-        </Grid>
-        <Grid Grid.Column="3" Grid.RowSpan="2" Margin="18,0,0,0" Background="{DynamicResource BackgroundColor}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" 
+                </TabItem.Header>
+                <Grid Grid.Column="3" Grid.RowSpan="2" Margin="18,0,0,0" Background="{DynamicResource BackgroundColor}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" 
                         Grid.Row="1"
                         HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{DynamicResource BackgroundColor}">
-                <materialDesign:PackIcon Kind="Magnify" 
+                        <materialDesign:PackIcon Kind="Magnify" 
                                          VerticalAlignment="Center" 
                                          Foreground="{DynamicResource IconColor}"/>
-                <TextBox
+                        <TextBox
                     Height="30"
                     x:Name="SearchTextBox"
                     PreviewKeyDown="SearchTextBox_OnPreviewKeyDown"
@@ -111,37 +90,37 @@
                     VerticalContentAlignment="Bottom"
                     materialDesign:HintAssist.Hint="Search by keyword..."
                     materialDesign:HintAssist.HelperText="ex: IPhone 13">
-                </TextBox>
+                        </TextBox>
 
-            </StackPanel>
+                    </StackPanel>
 
-            <Separator Grid.Row="1" VerticalAlignment="Bottom" 
+                    <Separator Grid.Row="1" VerticalAlignment="Bottom" 
                        Opacity=".25"
                        Margin="0,50,0,0"/>
 
 
-            <ScrollViewer Grid.Row="2" Background="{DynamicResource BackgroundColor}">
-                <ListBox x:Name="ProductsList" ItemsSource="{Binding Products}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="2" Background="{DynamicResource BackgroundColor}">
+                        <ListBox x:Name="ProductsList" ItemsSource="{Binding Products}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
 
-                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Grid.Row="0"
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" Grid.Row="0"
                                            TextWrapping="Wrap" FontSize="15"/>
-                                <TextBlock Text="{Binding Description}" Grid.Row="1"/>
-                                <TextBlock Text="{Binding Price}" Grid.Row="2" 
+                                        <TextBlock Text="{Binding Description}" Grid.Row="1"/>
+                                        <TextBlock Text="{Binding Price}" Grid.Row="2" 
                                            FontStyle="Italic" Foreground="{DynamicResource PriceColor}" FontWeight="DemiBold"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </ScrollViewer>
-            <!-- This is the xaml for the settings Button. I tried using a Menu instead (below the commented lines)
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+                    <!-- This is the xaml for the settings Button. I tried using a Menu instead (below the commented lines)
             <Button x:Name="SearchOptionsButton" HorizontalAlignment="Left" Margin="189,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" BorderBrush="#FFEAEAEA" Background="#FF3E3E3E" Foreground="#DDFFFFFF" Width="145">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ClipboardFlow" Foreground="White"/>
@@ -149,27 +128,112 @@
                 </StackPanel>
             </Button> 
             -->
-            <Menu Grid.Row="1" VerticalAlignment="Top" Width="250" HorizontalAlignment="Left" Margin="180,0,0,0">
-                <MenuItem Header="Search Options" Width="250">
-                    <MenuItem Header="Show search options here" >
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Setting 1"/>
-                            <CheckBox/>
-                        </StackPanel>
-                    </MenuItem>
-                    <MenuItem Header="Range">
-                        <WrapPanel Orientation="Vertical">
-                            <Label Content="Enter a range:"/>
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBox Width="40"/>
-                                <Label Content=" - "/>
-                                <TextBox Width="40"/>
-                            </WrapPanel>
-                        </WrapPanel>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
-        </Grid>
+                    <Menu Grid.Row="1" VerticalAlignment="Top" Width="250" HorizontalAlignment="Left" Margin="180,0,0,0">
+                        <MenuItem Header="Search Options" Width="250">
+                            <MenuItem Header="Show search options here" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Setting 1"/>
+                                    <CheckBox/>
+                                </StackPanel>
+                            </MenuItem>
+                            <MenuItem Header="Range">
+                                <WrapPanel Orientation="Vertical">
+                                    <Label Content="Enter a range:"/>
+                                    <WrapPanel Orientation="Horizontal">
+                                        <TextBox Width="40"/>
+                                        <Label Content=" - "/>
+                                        <TextBox Width="40"/>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </MenuItem>
+                        </MenuItem>
+                    </Menu>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel
+                        Width="auto"
+                        Height="auto">
+                        <materialDesign:PackIcon
+                            Width="24"
+                            Height="24"
+                            HorizontalAlignment="Center"
+                            Kind="Folder" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="Items" />
+                    </StackPanel>
+                </TabItem.Header>
+                <StackPanel
+                    Margin="16">
+                    <TextBlock
+                        Margin="0,0,0,8"
+                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                        Text="Items" />
+                    <TextBlock>
+                        <Run
+                            Text="tab 1 content. Default look and behaviors." />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run
+                            FontStyle="Italic">
+                            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+                        </Run>
+                    </TextBlock>
+                </StackPanel>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel
+                        Width="auto"
+                        Height="auto">
+                        <materialDesign:PackIcon
+                            Width="24"
+                            Height="24"
+                            HorizontalAlignment="Center"
+                            Kind="InfoCircle" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="About" />
+                    </StackPanel>
+                </TabItem.Header>
+                <StackPanel
+                    Margin="16">
+                    <TextBlock
+                        Margin="0,0,0,8"
+                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                        Text="About" />
+                    <TextBlock>
+                        <Run
+                            Text="About tab content. Default look and behaviors." />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run
+                            FontStyle="Italic">
+                            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+                        </Run>
+                    </TextBlock>
+                </StackPanel>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel
+                        Width="auto"
+                        Height="auto">
+                        <materialDesign:PackIcon
+                            Width="24"
+                            Height="24"
+                            HorizontalAlignment="Center"
+                            Kind="Cog" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="Settings" />
+                    </StackPanel>
+                </TabItem.Header>
+                <local:SettingsControl/>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>
