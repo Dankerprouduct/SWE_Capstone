@@ -73,6 +73,7 @@ namespace Capstone.Crawlers
                         Price = new Regex(priceRegex).Match(product.InnerText).Value
                     };
 
+                    Debug.WriteLine(productObj.Name);
                     result.Add(productObj);
                 }
 
