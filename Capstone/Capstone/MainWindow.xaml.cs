@@ -59,12 +59,12 @@ namespace Capstone
             InitializeComponent();
             DataContext = this;
 
-            this.Loaded += (sender, args) =>
+            ProductService.Instance = new ProductService(_context);
+			this.Loaded += (sender, args) =>
             {
-	            _context.Database.EnsureCreated(); 
+	            var result = _context.Database.EnsureCreated(); 
                 _context.Products.Load();
 
-                ProductService.Instance = new ProductService(_context); 
             };
         }
 
@@ -236,6 +236,17 @@ namespace Capstone
 
             w1.Show();
             this.Hide();
+        }
+
+        private void SaveItem(object sender, RoutedEventArgs e)
+        {
+	        var product = ((Button)sender).Tag as Product;
+            
+            UserProductService.Instance.AddItem(new SavedProduct()
+            {
+                ProductID = product.Id,
+                ProductName = product.Name
+            });
         }
     }
 }

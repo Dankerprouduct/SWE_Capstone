@@ -10,10 +10,12 @@ namespace Capstone.Services
 {
     public class BuggyDbContext: DbContext
     {
-        public DbSet<Product> Products { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
 	        optionsBuilder.UseSqlite("Data Source=products.db");
 	        optionsBuilder.UseLazyLoadingProxies();
         }
@@ -22,6 +24,10 @@ namespace Capstone.Services
         {
 	        modelBuilder.Entity<Product>().HasKey(x => x.Id);
 	        modelBuilder.Entity<Product>().Property(m => m.Description).IsRequired(false);
+
+	        modelBuilder.Entity<SavedProduct>().HasKey(x => x.ProductName);
+	        modelBuilder.Entity<SavedProduct>().Property(x => x.ProductID).IsRequired(true);
+            
 	        base.OnModelCreating(modelBuilder);
         }
     }

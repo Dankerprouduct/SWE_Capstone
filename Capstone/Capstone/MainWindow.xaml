@@ -124,11 +124,12 @@
                                         
                                         <Button Grid.RowSpan="3" Grid.Column="1" 
                                                 HorizontalAlignment="Right"
+                                                Tag="{Binding}" Click="SaveItem"
                                             Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                                            ToolTip="Save">
+                                            ToolTip="Save" Background="Transparent" BorderBrush="Transparent">
                                             <materialDesign:PackIcon
                                                 Background="Transparent"
-                                                Foreground="#8d8d8d"
+                                                Foreground="{DynamicResource PriceColor}"
                                                 Kind="Bookmark" Width="15" Height="15"/>
                                         </Button
 >
@@ -182,23 +183,7 @@
                             Text="Items" />
                     </StackPanel>
                 </TabItem.Header>
-                <StackPanel
-                    Margin="16">
-                    <TextBlock
-                        Margin="0,0,0,8"
-                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                        Text="Items" />
-                    <TextBlock>
-                        <Run
-                            Text="tab 1 content. Default look and behaviors." />
-                        <LineBreak />
-                        <LineBreak />
-                        <Run
-                            FontStyle="Italic">
-                            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-                        </Run>
-                    </TextBlock>
-                </StackPanel>
+                <local:ItemsUserControl/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>

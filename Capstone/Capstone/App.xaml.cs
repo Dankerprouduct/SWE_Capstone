@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using System.Windows;
 
 using System.Diagnostics;
+using Capstone.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Capstone.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Capstone
 {
@@ -17,6 +21,18 @@ namespace Capstone
     {
         void Buggy_Startup(object sender, StartupEventArgs e)
         {
+
+			//_context.Database.EnsureCreated();
+			//_context.Products.Load();
+			//_context.UserProducts.Add(new SavedProduct()
+			//{
+			// ProductID = 0,
+			// ProductName = "test"
+			//});
+
+			//ProductService.Instance = new ProductService(_context);
+			//UserProductService.Instance = new UserProductService(_context);
+
             //base.OnStartup(e);
             //These are the initial settings when the app first starts
             SettingsData initialSettings = new SettingsData()

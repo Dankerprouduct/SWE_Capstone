@@ -70,6 +70,10 @@
             "Microsoft.EntityFrameworkCore.Sqlite.Design": {
               "target": "Package",
               "version": "[1.1.6, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
             }
           },
           "imports": [
