@@ -123,6 +123,16 @@ namespace Capstone
                             resultItems.Add(product);
                         }
                     }
+                    //if target is included in the search
+                    if (SettingsData.IsTargetChecked)
+                    {
+                        var TargetCrawler = new TargetCrawler();
+                        var results = Task.Run(() => TargetCrawler.SearchProduct(searchText));
+                        foreach (Product? product in results.Result)
+                        {
+                            resultItems.Add(product);
+                        }
+                    }
                     //Sort the results,
                     resultItems = SortPriceDesc(resultItems);
 

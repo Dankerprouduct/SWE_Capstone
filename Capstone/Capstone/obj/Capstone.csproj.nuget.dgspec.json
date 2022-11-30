@@ -1,34 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj": {}
+    "C:\\Users\\goldenbaldie\\Source\\Repos\\Dankerprouduct\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj": {
+    "C:\\Users\\goldenbaldie\\Source\\Repos\\Dankerprouduct\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj",
+        "projectUniqueName": "C:\\Users\\goldenbaldie\\Source\\Repos\\Dankerprouduct\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj",
         "projectName": "Capstone",
-        "projectPath": "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj",
-        "packagesPath": "C:\\Users\\danke\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danke\\Documents\\GitHub\\SWE_Capstone\\Capstone\\Capstone\\obj\\",
+        "projectPath": "C:\\Users\\goldenbaldie\\Source\\Repos\\Dankerprouduct\\SWE_Capstone\\Capstone\\Capstone\\Capstone.csproj",
+        "packagesPath": "C:\\Users\\goldenbaldie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\goldenbaldie\\Source\\Repos\\Dankerprouduct\\SWE_Capstone\\Capstone\\Capstone\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\Telerik\\ToolboxNuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\danke\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
+          "C:\\Users\\goldenbaldie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/marietta-ndt/index.json": {},
-          "https://nuget.telerik.com/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {

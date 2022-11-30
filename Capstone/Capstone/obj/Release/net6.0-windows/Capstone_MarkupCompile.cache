@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jcb13\Source\Repos\SWE_Capstone1\Capstone\Capstone\obj\Release\net6.0-windows\
+C:\Users\goldenbaldie\source\repos\Dankerprouduct\SWE_Capstone\Capstone\Capstone\obj\Release\net6.0-windows\
 Capstone
 none
 false
 TRACE;RELEASE;NET;NET6_0;NETCOREAPP
-C:\Users\jcb13\Source\Repos\SWE_Capstone1\Capstone\Capstone\App.xaml
-11407045341
+C:\Users\goldenbaldie\source\repos\Dankerprouduct\SWE_Capstone\Capstone\Capstone\App.xaml
+31488122235
 
-7-951755653
-197410371626
-MainWindow.xaml;
+131664798505
+217883196655
+MainWindow.xaml;SettingsControl.xaml;SettingsWindow.xaml;
 
 True
 

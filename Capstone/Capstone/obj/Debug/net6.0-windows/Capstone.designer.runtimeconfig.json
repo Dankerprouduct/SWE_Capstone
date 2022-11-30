@@ -12,9 +12,9 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\danke\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\danke\\.nuget\\packages",
-      "E:\\Telerik\\ToolboxNuGetPackages"
+      "C:\\Users\\goldenbaldie\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\goldenbaldie\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
       "System.Reflection.NullabilityInfoContext.IsSupported": true,

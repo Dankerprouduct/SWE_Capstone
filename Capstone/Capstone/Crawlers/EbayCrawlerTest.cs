@@ -15,7 +15,7 @@ namespace Capstone.Crawlers
     {
         public string BaseUrl { get; set; }
 
-        public bool Enabled { get; set; }
+        public bool Enabled { get; set; } = true;
 
 		public EbayCrawler()
         {

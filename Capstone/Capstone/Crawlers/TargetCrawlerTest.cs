@@ -1,40 +1,35 @@
-﻿using System;
+﻿using Capstone.Models;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Formats.Asn1;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Printing;
+using System.Net.Http;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Capstone.Models;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.IO.Compression;
+using System.IO;
 
 namespace Capstone.Crawlers
 {
-    public class AmazonCrawler : IWebCrawler
+    public class TargetCrawler: IWebCrawler
     {
+        public string BaseUrl { get; set; }
 
-	    public bool Enabled { get; set; }  
 
-		public string BaseUrl { get; set; }
-        public AmazonCrawler()
+
+        public bool Enabled { get; set; } = false;
+
+        public TargetCrawler()
         {
-            BaseUrl = @"https://www.amazon.com/"; 
+            BaseUrl = @"https://www.target.com/";
         }
-
-
         public async Task<List<Product>> SearchProduct(string productName)
         {
-
             List<Product> result = new List<Product>();
-
             var query = productName.Replace(' ', '+');
-            var url = BaseUrl + $"s?k={query}";
+            var url = BaseUrl + $"s?searchTerm={query}";
 
             var httpClient = new HttpClient();
             var productValue = new ProductInfoHeaderValue("ScraperBot", "1.0");
@@ -50,20 +45,20 @@ namespace Capstone.Crawlers
 
                 var s = Decompress(content.Result);
                 var pageHtml = Encoding.Default.GetString(s);
-                
+
                 HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
-                
+
                 htmlDocument.LoadHtml(pageHtml);
                 var productList = htmlDocument.DocumentNode.SelectNodes("//div[contains(@data-component-type, 's-search-result')]");
 
-                
+
                 foreach (var product in productList)
                 {
 
                     Debug.WriteLine(product.InnerText + "\n\n");
-                    
 
-                    var split = product.InnerText.Split(new String[] {"  "}, StringSplitOptions.RemoveEmptyEntries);
+
+                    var split = product.InnerText.Split(new String[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
                     var title = split[0];
                     var priceRegex = "\\$(\\d{1,}.\\d{1,2})";
 
@@ -73,6 +68,7 @@ namespace Capstone.Crawlers
                         Price = new Regex(priceRegex).Match(product.InnerText).Value
                     };
 
+                   
                     Debug.WriteLine(productObj.Name);
                     result.Add(productObj);
                 }
@@ -81,9 +77,10 @@ namespace Capstone.Crawlers
             }
             else
             {
+                Console.WriteLine("here");
                 Debug.WriteLine($"search for {productName} failed!");
             }
-            
+
             return result;
 
         }
@@ -98,6 +95,7 @@ namespace Capstone.Crawlers
                 zipStream.CopyTo(resultStream);
                 return resultStream.ToArray();
             }
-        }
+        
+    }
     }
 }

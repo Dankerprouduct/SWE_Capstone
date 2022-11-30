@@ -21,10 +21,10 @@ namespace Capstone
             //These are the initial settings when the app first starts
             SettingsData initialSettings = new SettingsData()
             {
-                IsAmazonChecked     = true,         //As we implement more crawlers, we can change the default settings here
-                IsEBayChecked       = true,
+                IsAmazonChecked     = false,         //As we implement more crawlers, we can change the default settings here
+                IsEBayChecked       = false,
                 IsCostcoChecked     = false,
-                IsTargetChecked     = false,
+                IsTargetChecked     = true,
                 IsWalmartChecked    = false,
                 IsSaveDataChecked   = true
             };
