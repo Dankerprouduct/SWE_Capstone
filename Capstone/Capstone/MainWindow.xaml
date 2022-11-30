@@ -100,21 +100,38 @@
 
 
                     <ScrollViewer Grid.Row="2" Background="{DynamicResource BackgroundColor}">
-                        <ListBox x:Name="ProductsList" ItemsSource="{Binding Products}">
+                        <ListBox x:Name="ProductsList" ItemsSource="{Binding Products}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                    <Grid HorizontalAlignment="Stretch">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
 
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
                                         <TextBlock Text="{Binding Name}" FontWeight="Bold" Grid.Row="0"
                                            TextWrapping="Wrap" FontSize="15"/>
                                         <TextBlock Text="{Binding Description}" Grid.Row="1"/>
                                         <TextBlock Text="{Binding Price}" Grid.Row="2" 
                                            FontStyle="Italic" Foreground="{DynamicResource PriceColor}" FontWeight="DemiBold"/>
+                                        
+                                        
+                                        <Button Grid.RowSpan="3" Grid.Column="1" 
+                                                HorizontalAlignment="Right"
+                                            Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                            ToolTip="Save">
+                                            <materialDesign:PackIcon
+                                                Background="Transparent"
+                                                Foreground="#8d8d8d"
+                                                Kind="Bookmark" Width="15" Height="15"/>
+                                        </Button
+>
                                     </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

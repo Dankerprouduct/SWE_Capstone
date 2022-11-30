@@ -63,6 +63,8 @@ namespace Capstone
             {
 	            _context.Database.EnsureCreated(); 
                 _context.Products.Load();
+
+                ProductService.Instance = new ProductService(_context); 
             };
         }
 
@@ -154,6 +156,9 @@ namespace Capstone
                     foreach (var p in values)
                     {
                         products.Add(p);
+
+                        p.DateTime = DateTime.Now;
+                        await ProductService.Instance.AddProductAsync(p);
                     }
 		        }
 	        }

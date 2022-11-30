@@ -17,5 +17,12 @@ namespace Capstone.Services
 	        optionsBuilder.UseSqlite("Data Source=products.db");
 	        optionsBuilder.UseLazyLoadingProxies();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+	        modelBuilder.Entity<Product>().HasKey(x => x.Id);
+	        modelBuilder.Entity<Product>().Property(m => m.Description).IsRequired(false);
+	        base.OnModelCreating(modelBuilder);
+        }
     }
 }
