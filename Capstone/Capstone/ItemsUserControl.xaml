@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Capstone"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -22,18 +23,37 @@
             <TextBlock Text="Saved Products" FontSize="24" Foreground="White" Margin="10,5,0,0"/>
             <Separator VerticalAlignment="Bottom"/>
 
-            <ScrollViewer Grid.Row="1">
-                <ListView x:Name="SavedProductList" ScrollViewer.CanContentScroll="True" SelectionChanged="SavedProductList_OnSelectionChanged">
+            <ScrollViewer Grid.Row="1" MaxHeight="150">
+                <ListView x:Name="SavedProductList" ScrollViewer.CanContentScroll="True"
+                          HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <TextBlock Text="{Binding ProductName}"/>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0"
+                                        HorizontalAlignment="Left"
+                                        Tag="{Binding}" Click="RemoveItem"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                        ToolTip="Save" Background="Transparent" BorderBrush="Transparent">
+                                    <materialDesign:PackIcon
+                                        Background="Transparent"
+                                        Foreground="White"
+                                        Kind="Trash"  Width="15" Height="15"/>
+                                </Button>
+
+
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding ProductName}"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
 
+            <Separator Grid.Row="1" VerticalAlignment="Bottom"/>
         </Grid>
 
         <Grid Grid.Row="1">

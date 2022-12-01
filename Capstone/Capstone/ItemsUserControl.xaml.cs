@@ -45,7 +45,7 @@ namespace Capstone
 			}
 		}
 
-		private static double[] _currentValues = new double[] {0, 1, 2, 3, 4, 5};
+		private static double[] _currentValues = new double[] {};
 		public ObservableCollection<SavedProduct> Products
 		{
 			get
@@ -121,6 +121,11 @@ namespace Capstone
 			field = value;
 			OnPropertyChanged(propertyName);
 			return true;
+		}
+
+		private void RemoveItem(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }
