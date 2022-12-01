@@ -19,6 +19,11 @@ namespace Capstone.Services
 	        _dbContext = context; 
         }
 
+        public async Task<List<Product>> GetProducts()
+        {
+	        return _dbContext.Products.ToList();
+        }
+
         public async Task<Product> AddProductAsync(Product product)
         {
 	        try

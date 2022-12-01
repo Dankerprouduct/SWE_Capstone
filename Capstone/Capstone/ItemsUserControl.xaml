@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Capstone"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -22,7 +23,7 @@
             <Separator VerticalAlignment="Bottom"/>
 
             <ScrollViewer Grid.Row="1">
-                <ListView x:Name="SavedProductList" ScrollViewer.CanContentScroll="True">
+                <ListView x:Name="SavedProductList" ScrollViewer.CanContentScroll="True" SelectionChanged="SavedProductList_OnSelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -32,10 +33,13 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
-            
+
         </Grid>
 
-        
-        
+        <Grid Grid.Row="1">
+            <lvc:CartesianChart Series="{Binding Series}"/>
+        </Grid>
+
+
     </Grid>
 </UserControl>
