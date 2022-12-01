@@ -158,8 +158,8 @@
                                             ToolTip="Save" Background="Transparent" BorderBrush="Transparent">
                                             <materialDesign:PackIcon
                                                 Background="Transparent"
-                                                Foreground="Gray"
-                                                Kind="Bookmark" Width="20" Height="20"/>
+                                                Foreground="#9ae69a"
+                                                Kind="BookmarkAdd" Width="20" Height="20"/>
                                         </Button
 >
                                     </Grid>
@@ -201,7 +201,7 @@
                             Width="24"
                             Height="24"
                             HorizontalAlignment="Center"
-                            Kind="Folder" />
+                            Kind="Bookmark" />
                         <TextBlock
                             HorizontalAlignment="Center"
                             Text="Items" />

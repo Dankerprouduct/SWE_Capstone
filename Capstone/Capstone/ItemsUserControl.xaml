@@ -43,7 +43,7 @@
                                         ToolTip="Save" Background="Transparent" BorderBrush="Transparent">
                                     <materialDesign:PackIcon
                                         Background="Transparent"
-                                        Foreground="White"
+                                        Foreground="#f6636d"
                                         Kind="Trash"  Width="15" Height="15"/>
                                 </Button>
 
