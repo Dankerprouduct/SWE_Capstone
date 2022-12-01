@@ -72,7 +72,6 @@ namespace Capstone
 			UserProductService.Instance = new UserProductService();
 
 			DataContext = this;
-			SavedProductList.ItemsSource = Products;
 			foreach (var axis in PriceChart.YAxes)
 			{
 				axis.ShowSeparatorLines = false;
@@ -83,6 +82,13 @@ namespace Capstone
 				_currentValues = GatherValues().Result.ToArray();
 				OnPropertyChanged(nameof(Series));
 			};
+
+
+			UserProductService.Instance.ProductsUpdated += (sender, args) =>
+			{
+				OnPropertyChanged(nameof(Products));
+				
+			};
 		}
 
 		private async Task<List<double>> GatherValues()
@@ -90,6 +96,8 @@ namespace Capstone
 			var products = await ProductService.Instance.GetProducts();
 
 			var currentItem = (SavedProduct) SavedProductList.SelectedItem;
+			if (currentItem == null)
+				return new List<double>();
 			var items = products.Where(x => x.Name == currentItem.ProductName);
 
 			var values = new List<double>();
@@ -140,7 +148,13 @@ namespace Capstone
 
 		private void RemoveItem(object sender, RoutedEventArgs e)
 		{
+			var button = sender as Button;
+			var tag = button.Tag as SavedProduct;
 
+			if (tag != null)
+			{
+				UserProductService.Instance.RemoveItem(tag);
+			}
 		}
 	}
 }

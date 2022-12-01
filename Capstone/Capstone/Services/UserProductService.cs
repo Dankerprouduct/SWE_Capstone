@@ -11,6 +11,8 @@ namespace Capstone.Services
 {
 	public class UserProductService
 	{
+
+		public EventHandler<EventArgs> ProductsUpdated { get; set; }
 		public static UserProductService Instance;
 		private List<SavedProduct> _savedProducts;
 
@@ -70,6 +72,8 @@ namespace Capstone.Services
 				writer.Write(json);
 				writer.Close();
 			}
+
+			ProductsUpdated?.Invoke(this, EventArgs.Empty);
 		}
 	}
 }

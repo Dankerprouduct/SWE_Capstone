@@ -20,11 +20,13 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Saved Products" FontSize="24" Foreground="White" Margin="10,5,0,0"/>
-            <Separator VerticalAlignment="Bottom" Opacity=".5"/>
+            <TextBlock Text="Saved Products"  Style="{StaticResource MaterialDesignHeadline5TextBlock}" 
+                       Foreground="White" Margin="10,10,0,10"/>
+            <!--<Separator VerticalAlignment="Bottom" Opacity=".5"/>-->
 
             <ScrollViewer Grid.Row="1" MaxHeight="300" Background="#252525">
                 <ListBox x:Name="SavedProductList" ScrollViewer.CanContentScroll="True"
+                         ItemsSource="{Binding Products}"
                           HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
                     <ListBox.ItemTemplate>
                         <DataTemplate>

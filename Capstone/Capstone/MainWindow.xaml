@@ -208,8 +208,8 @@
                     </StackPanel>
                 </TabItem.Header>
                 <local:ItemsUserControl/>
-            </TabItem>
-            <TabItem>
+            </TabItem> 
+            <TabItem >
                 <TabItem.Header>
                     <StackPanel
                         Width="auto"
@@ -224,30 +224,34 @@
                             Text="About" />
                     </StackPanel>
                 </TabItem.Header>
-                <StackPanel
-                    Margin="16">
-                    <TextBlock
-                        Margin="0,0,0,8"
-                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                        Text="About" />
-                    <TextBlock TextWrapping="Wrap">
-                        <Run>
-                            Buggy is a desktop price scraper application that finds the best deals for you across several major retailers. Retailers include Amazon, Costco, Target, Walmart, and eBay. 
-                        </Run>
-                        <LineBreak/>
 
-                        We simplify bargain hunting by condensing product information into one, convenient place. 
+                <Grid Background="#303030">
+                    <StackPanel 
+                        Margin="16">
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                            Text="About" />
+                        <TextBlock TextWrapping="Wrap">
+                            <Run>
+                                Buggy is a desktop price scraper application that finds the best deals for you across several major retailers. Retailers include Amazon, Costco, Target, Walmart, and eBay. 
+                            </Run>
+                            <LineBreak/>
 
-                        <LineBreak/>
-                        You can save products to get price drop notifications, look them up faster, and view a price history based on previous searches. 
-                        <LineBreak/>
-                        When you are ready to buy, simply click on the buy button and you will be directed to the vendor's page to check out. 
+                            We simplify bargain hunting by condensing product information into one, convenient place. 
+
+                            <LineBreak/>
+                            You can save products to get price drop notifications, look them up faster, and view a price history based on previous searches. 
+                            <LineBreak/>
+                            When you are ready to buy, simply click on the buy button and you will be directed to the vendor's page to check out. 
                         
-                        <LineBreak/>
-                        <LineBreak/>
-                        Shop smarter with Buggy!
-                    </TextBlock>
-                </StackPanel>
+                            <LineBreak/>
+                            <LineBreak/>
+                            Shop smarter with Buggy!
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+               
             </TabItem>
             <TabItem>
                 <TabItem.Header>
