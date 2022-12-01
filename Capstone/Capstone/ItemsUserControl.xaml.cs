@@ -20,7 +20,12 @@ using System.Windows.Shapes;
 using Capstone.Models;
 using Capstone.Services;
 using LiveChartsCore;
+using LiveChartsCore.Kernel.Drawing;
 using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Drawing;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.WPF;
+using SkiaSharp;
 
 namespace Capstone
 {
@@ -38,13 +43,19 @@ namespace Capstone
 				{
 					new LineSeries<double>
 					{
+						DataLabelsSize = 15,
+						DataLabelsPaint = new SolidColorPaint(SKColors.White),
+						DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Top,
+						DataLabelsFormatter = (point) => point.PrimaryValue.ToString("C"),
 						Values = _currentValues,
-						Fill = null
+						IsHoverable = false,
+						Fill = null,
+						
 					}
 				};
 			}
 		}
-
+		
 		private static double[] _currentValues = new double[] {};
 		public ObservableCollection<SavedProduct> Products
 		{
@@ -62,6 +73,10 @@ namespace Capstone
 
 			DataContext = this;
 			SavedProductList.ItemsSource = Products;
+			foreach (var axis in PriceChart.YAxes)
+			{
+				axis.ShowSeparatorLines = false;
+			}
 
 			SavedProductList.SelectionChanged += (sender, args) =>
 			{

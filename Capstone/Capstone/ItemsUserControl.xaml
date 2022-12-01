@@ -8,7 +8,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="#303030">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -21,17 +21,17 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Saved Products" FontSize="24" Foreground="White" Margin="10,5,0,0"/>
-            <Separator VerticalAlignment="Bottom"/>
+            <Separator VerticalAlignment="Bottom" Opacity=".5"/>
 
-            <ScrollViewer Grid.Row="1" MaxHeight="150">
-                <ListView x:Name="SavedProductList" ScrollViewer.CanContentScroll="True"
+            <ScrollViewer Grid.Row="1" MaxHeight="300" Background="#252525">
+                <ListBox x:Name="SavedProductList" ScrollViewer.CanContentScroll="True"
                           HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                    <ListView.ItemTemplate>
+                    <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="500"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Button Grid.Column="0"
@@ -46,18 +46,21 @@
                                 </Button>
 
 
-                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding ProductName}"/>
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" 
+                                           TextTrimming="WordEllipsis"
+                                           ToolTip="{Binding ProductName}"
+                                           Text="{Binding ProductName}"/>
                             </Grid>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </ScrollViewer>
 
             <Separator Grid.Row="1" VerticalAlignment="Bottom"/>
         </Grid>
 
         <Grid Grid.Row="1">
-            <lvc:CartesianChart Series="{Binding Series}"/>
+            <lvc:CartesianChart x:Name="PriceChart" Series="{Binding Series}" />
         </Grid>
 
 
